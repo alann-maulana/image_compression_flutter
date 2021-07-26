@@ -16,7 +16,10 @@ dependencies:
 
   flutter_image_compress: ^1.0.0
   image_compression: #^1.0.2
-    path: ../image_compression
+    # path: ../image_compression
+    git: 
+      url: https://github.com/eyro-labs/image_compression
+      ref: main
 
 dev_dependencies:
   flutter_test:

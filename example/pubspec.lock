@@ -14,7 +14,7 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.5.0"
+    version: "2.7.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -152,9 +152,11 @@ packages:
   image_compression:
     dependency: transitive
     description:
-      path: "../../image_compression"
-      relative: true
-    source: path
+      path: "."
+      ref: main
+      resolved-ref: d195f8199b02aabfddbf6622a698db6b825f2fa2
+      url: "https://github.com/eyro-labs/image_compression"
+    source: git
     version: "1.0.2"
   image_compression_flutter:
     dependency: "direct main"
@@ -204,7 +206,7 @@ packages:
       name: meta
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.0"
+    version: "1.4.0"
   mime:
     dependency: transitive
     description:
@@ -300,7 +302,7 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.0"
+    version: "1.8.1"
   stack_trace:
     dependency: transitive
     description:
@@ -335,7 +337,7 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.19"
+    version: "0.4.0"
   typed_data:
     dependency: transitive
     description:
