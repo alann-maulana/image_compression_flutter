@@ -173,12 +173,10 @@ packages:
   image_compression:
     dependency: transitive
     description:
-      path: "."
-      ref: main
-      resolved-ref: d195f8199b02aabfddbf6622a698db6b825f2fa2
-      url: "https://github.com/eyro-labs/image_compression"
-    source: git
-    version: "1.0.2"
+      name: image_compression
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
   image_compression_flutter:
     dependency: "direct main"
     description:
