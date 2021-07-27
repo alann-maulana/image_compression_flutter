@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:image_compression/image_compression.dart' as ic;
 import 'package:image_compression_flutter/image_compression_flutter.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
 
 void main() {
   runApp(MaterialApp(home: MainPage()));
