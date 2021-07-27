@@ -22,17 +22,3 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
-  plugin:
-    platforms:
-      android:
-        package: id.co.eyro.image_compression_flutter
-        pluginClass: ImageCompressionFlutterPlugin
-      ios:
-        pluginClass: ImageCompressionFlutterPlugin
-      macos:
-        pluginClass: ImageCompressionFlutterPlugin
-      web:
-        pluginClass: ImageCompressionFlutterWeb
-        fileName: image_compression_flutter_web.dart
-      windows:
-        pluginClass: ImageCompressionFlutterPlugin
