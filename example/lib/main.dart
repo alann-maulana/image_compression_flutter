@@ -1,7 +1,4 @@
-// import 'dart:io';
-
 import 'package:file_selector/file_selector.dart';
-import 'package:filesystem_picker/filesystem_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_compression/image_compression.dart' as ic;
@@ -187,7 +184,6 @@ class _MainPageState extends State<MainPage> {
       }
     } on MissingPluginException catch (_) {
       final allowedExtensions = ['.jpg', '.jpeg', '.png'];
-      // if (Platform.isLinux) {
       final typeGroup = XTypeGroup(
         label: 'images',
         extensions: allowedExtensions,
@@ -205,29 +201,6 @@ class _MainPageState extends State<MainPage> {
           );
         });
       }
-      // } else {
-      //   final photoDir = await getDownloadsDirectory();
-      //   final path = await FilesystemPicker.open(
-      //     title: 'Pick an Image',
-      //     context: context,
-      //     rootDirectory: photoDir!,
-      //     fsType: FilesystemType.file,
-      //     folderIconColor: Theme.of(context).primaryColor,
-      //     allowedExtensions: allowedExtensions,
-      //     fileTileSelectMode: FileTileSelectMode.wholeTile,
-      //   );
-
-      //   if (path != null) {
-      //     final file = File(path);
-      //     final bytes = await file.readAsBytes();
-      //     setState(() {
-      //       this.image = ic.ImageFile(
-      //         filePath: file.path,
-      //         rawBytes: bytes,
-      //       );
-      //     });
-      //   }
-      // }
     }
   }
 
