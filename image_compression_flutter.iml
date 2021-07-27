@@ -9,6 +9,12 @@
       <excludeFolder url="file://$MODULE_DIR$/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/image_compression_flutter/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/image_compression_flutter/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/image_compression_flutter/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/macos/Flutter/ephemeral/.symlinks/plugins/image_compression_flutter/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/example/macos/Flutter/ephemeral/.symlinks/plugins/image_compression_flutter/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/example/macos/Flutter/ephemeral/.symlinks/plugins/image_compression_flutter/build" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />

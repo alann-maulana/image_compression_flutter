@@ -1,5 +1,6 @@
-import 'dart:io';
+// import 'dart:io';
 
+import 'package:file_selector/file_selector.dart';
 import 'package:filesystem_picker/filesystem_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -185,27 +186,48 @@ class _MainPageState extends State<MainPage> {
         });
       }
     } on MissingPluginException catch (_) {
-      final photoDir = await getDownloadsDirectory();
-      final path = await FilesystemPicker.open(
-        title: 'Pick an Image',
-        context: context,
-        rootDirectory: photoDir!,
-        fsType: FilesystemType.file,
-        folderIconColor: Theme.of(context).primaryColor,
-        allowedExtensions: ['.jpg', '.jpeg', '.png'],
-        fileTileSelectMode: FileTileSelectMode.wholeTile,
+      final allowedExtensions = ['.jpg', '.jpeg', '.png'];
+      // if (Platform.isLinux) {
+      final typeGroup = XTypeGroup(
+        label: 'images',
+        extensions: allowedExtensions,
+      );
+      final image = await openFile(
+        acceptedTypeGroups: [typeGroup],
       );
 
-      if (path != null) {
-        final file = File(path);
-        final bytes = await file.readAsBytes();
+      if (image != null) {
+        final bytes = await image.readAsBytes();
         setState(() {
           this.image = ic.ImageFile(
-            filePath: file.path,
+            filePath: image.path,
             rawBytes: bytes,
           );
         });
       }
+      // } else {
+      //   final photoDir = await getDownloadsDirectory();
+      //   final path = await FilesystemPicker.open(
+      //     title: 'Pick an Image',
+      //     context: context,
+      //     rootDirectory: photoDir!,
+      //     fsType: FilesystemType.file,
+      //     folderIconColor: Theme.of(context).primaryColor,
+      //     allowedExtensions: allowedExtensions,
+      //     fileTileSelectMode: FileTileSelectMode.wholeTile,
+      //   );
+
+      //   if (path != null) {
+      //     final file = File(path);
+      //     final bytes = await file.readAsBytes();
+      //     setState(() {
+      //       this.image = ic.ImageFile(
+      //         filePath: file.path,
+      //         rawBytes: bytes,
+      //       );
+      //     });
+      //   }
+      // }
     }
   }
 
