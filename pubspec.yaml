@@ -34,3 +34,5 @@ flutter:
       web:
         pluginClass: ImageCompressionFlutterWeb
         fileName: image_compression_flutter_web.dart
+      windows:
+        pluginClass: ImageCompressionFlutterPlugin
