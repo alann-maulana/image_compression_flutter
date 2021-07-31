@@ -19,7 +19,7 @@ build-local: reformatting build
 	open coverage/index.html
 
 pana:
-	pana -s path .
+	pana --no-warning
 
 docs:
 	rm -rf doc
