@@ -4,7 +4,7 @@ A Flutter extension to compress and resize the images (JPG, PNG, WEBP).
 
 Combining use of packages :
 * [image_compression](https://pub.dev/packages/image_compression) : `MacOS`, `Windows`, `Linux` and `Web`
-* [flutter_image_compress](https://pub.dev/packages/flutter_image_compress) : Android` and `iOS`
+* [flutter_image_compress](https://pub.dev/packages/flutter_image_compress) : `Android` and `iOS`
 
 Notes:  Because of [pana-issue#889](https://github.com/dart-lang/pana/issues/889) so it only detect for `Web` platform only.
 
