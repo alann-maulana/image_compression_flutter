@@ -10,9 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_web_plugins:
-    sdk: flutter
 
+  cross_file: ^0.3.1+4
   flutter_image_compress: ^1.0.0
   image_compression: ^1.0.3
 
