@@ -11,13 +11,9 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  file_selector: ^0.8.2
-  file_selector_linux: ^0.0.2+1
-  file_selector_macos: ^0.0.4+1
-  file_selector_windows: ^0.0.2+1
+  flimer: ^1.0.0
   image_compression_flutter:
     path: ../
-  image_picker: ^0.8.2
 
 dev_dependencies:
   flutter_test:

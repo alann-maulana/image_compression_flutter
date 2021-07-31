@@ -1,9 +1,6 @@
-import 'package:file_selector/file_selector.dart';
+import 'package:flimer/flimer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:image_compression/image_compression.dart' as ic;
 import 'package:image_compression_flutter/image_compression_flutter.dart';
-import 'package:image_picker/image_picker.dart';
 
 void main() {
   runApp(MaterialApp(home: MainPage()));
@@ -15,10 +12,9 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final ImagePicker _picker = ImagePicker();
   Configuration config = Configuration();
-  ic.ImageFile? image;
-  ic.ImageFile? imageOutput;
+  ImageFile? image;
+  ImageFile? imageOutput;
   bool processing = false;
 
   @override
@@ -154,7 +150,7 @@ class _MainPageState extends State<MainPage> {
         divisions: 100,
         min: 0,
         max: 100,
-        label: 'Quality',
+        label: config.quality.toString(),
         onChanged: (value) {
           setState(() {
             config = Configuration(
@@ -169,37 +165,13 @@ class _MainPageState extends State<MainPage> {
   }
 
   handleOpenGallery() async {
-    try {
-      final image = await _picker.pickImage(source: ImageSource.gallery);
+    final xFile = await flimer.pickImage(source: ImageSource.gallery);
 
-      if (image != null) {
-        final bytes = await image.readAsBytes();
-        setState(() {
-          this.image = ic.ImageFile(
-            filePath: image.path,
-            rawBytes: bytes,
-          );
-        });
-      }
-    } on MissingPluginException catch (_) {
-      final allowedExtensions = ['.jpg', '.jpeg', '.png'];
-      final typeGroup = XTypeGroup(
-        label: 'images',
-        extensions: allowedExtensions,
-      );
-      final image = await openFile(
-        acceptedTypeGroups: [typeGroup],
-      );
-
-      if (image != null) {
-        final bytes = await image.readAsBytes();
-        setState(() {
-          this.image = ic.ImageFile(
-            filePath: image.path,
-            rawBytes: bytes,
-          );
-        });
-      }
+    if (xFile != null) {
+      final image = await xFile.asImageFile;
+      setState(() {
+        this.image = image;
+      });
     }
   }
 
