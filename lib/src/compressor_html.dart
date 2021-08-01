@@ -6,8 +6,6 @@ import 'configurations.dart';
 import 'dart_compressor.dart';
 import 'interface.dart';
 
-export 'configurations.dart';
-
 ImageCompressionFlutter getCompressor() => ImageCompressionFlutterHtml();
 
 class ImageCompressionFlutterHtml extends ImageCompressionFlutter {
