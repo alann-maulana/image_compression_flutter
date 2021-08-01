@@ -36,5 +36,5 @@ flutter:
         pluginClass: ImageCompressionFlutterPlugin
       windows:
         pluginClass: ImageCompressionFlutterPlugin
-#      linux:
-#        pluginClass: ImageCompressionFlutterPlugin
+      linux:
+        pluginClass: ImageCompressionFlutterPlugin
