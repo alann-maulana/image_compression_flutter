@@ -1,5 +1,5 @@
 name: image_compression_flutter
-description: A Flutter extension to compress and resize the images (JPG, PNG, WEBP).
+description: Flutter image compression and resize for Mobile, Desktop and Web. Support format JPG, PNG, WEBP.
 version: 1.0.1
 homepage: https://github.com/eyro-labs/image_compression_flutter
 
@@ -9,6 +9,8 @@ environment:
 
 dependencies:
   flutter:
+    sdk: flutter
+  flutter_web_plugins:
     sdk: flutter
 
   cross_file: ^0.3.1+4
@@ -20,3 +22,19 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
+  plugin:
+    platforms:
+      android:
+        package: id.co.eyro.image_compression_flutter
+        pluginClass: ImageCompressionFlutterPlugin
+      ios:
+        pluginClass: ImageCompressionFlutterPlugin
+      web:
+        pluginClass: ImageCompressionFlutterWeb
+        fileName: image_compression_flutter_web.dart
+      macos:
+        pluginClass: ImageCompressionFlutterPlugin
+#      windows:
+#        pluginClass: ImageCompressionFlutterPlugin
+#      linux:
+#        pluginClass: ImageCompressionFlutterPlugin
