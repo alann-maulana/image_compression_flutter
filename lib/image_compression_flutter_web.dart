@@ -5,7 +5,6 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:image_compression_flutter/src/compressor_html.dart';
 
 import 'image_compression_flutter.dart';
-import 'src/configurations.dart';
 import 'src/extension.dart';
 
 /// A web implementation of the ImageCompressionFlutter plugin.

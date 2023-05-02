@@ -1,5 +1,5 @@
-import 'dart:io';
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/services.dart';
 
@@ -7,6 +7,7 @@ import 'compress_format.dart';
 
 class Validator {
   final MethodChannel channel;
+
   Validator(this.channel);
 
   bool ignoreCheckExtName = false;

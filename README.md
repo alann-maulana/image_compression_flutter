@@ -22,6 +22,6 @@ final param = ImageFileConfiguration(input: input, config: config);
 final output = await compressor.compress(param);
 
 print("Input size : ${input.sizeInBytes}");
-print("Output size : ${Output.sizeInBytes}");
+print("Output size : ${output.sizeInBytes}");
 ```
 

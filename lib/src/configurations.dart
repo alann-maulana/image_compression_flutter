@@ -27,7 +27,7 @@ class Configuration {
   final bool useJpgPngNativeCompressor;
 
   const Configuration({
-    this.quality: 80,
+    this.quality = 80,
     this.outputType = ImageOutputType.webpThenJpg,
     this.useJpgPngNativeCompressor = false,
   }) : assert(quality > 0 && quality <= 100);
