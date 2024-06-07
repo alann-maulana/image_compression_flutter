@@ -41,19 +41,19 @@ class Validator {
         final String version = await channel.invokeMethod("getSystemVersion");
         final firstVersion = version.split(".")[0];
         final result = int.parse(firstVersion) >= 11;
-        final msg = "The heic format only support iOS 11.0+";
+        const msg = "The heic format only support iOS 11.0+";
         assert(result, msg);
         _checkThrowError(result, msg);
         return result;
       } else if (Platform.isAndroid) {
         final int version = await channel.invokeMethod("getSystemVersion");
         final result = version >= 28;
-        final msg = "The heic format only support android API 28+";
+        const msg = "The heic format only support android API 28+";
         assert(result, msg);
         _checkThrowError(result, msg);
         return result;
       } else {
-        final msg = "The heic format only support android and iOS.";
+        const msg = "The heic format only support android and iOS.";
         assert(Platform.isAndroid || Platform.isIOS, msg);
         _checkThrowError(false, msg);
         return false;

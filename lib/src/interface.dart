@@ -8,7 +8,7 @@ import 'extension.dart';
 /// Image compression engine
 abstract class ImageCompressionFlutter {
   static const MethodChannel _channel =
-      const MethodChannel('image_compression_flutter');
+      MethodChannel('image_compression_flutter');
 
   @protected
   Future dummyCallNativeCode(

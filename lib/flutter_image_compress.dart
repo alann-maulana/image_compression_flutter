@@ -37,9 +37,9 @@ export 'src/compress_format.dart';
 ///
 class FlutterImageCompress {
   static const MethodChannel _channel =
-      const MethodChannel('flutter_image_compress');
+      MethodChannel('flutter_image_compress');
 
-  static Validator _validator = Validator(_channel);
+  static final Validator _validator = Validator(_channel);
 
   static Validator get validator => _validator;
 
@@ -192,7 +192,7 @@ class FlutterImageCompress {
     }
 
     final img = AssetImage(assetName);
-    final config = ImageConfiguration();
+    const config = ImageConfiguration();
 
     AssetBundleImageKey key = await img.obtainKey(config);
     final ByteData data = await key.bundle.load(key.name);

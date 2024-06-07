@@ -3,16 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:image_compression_flutter/image_compression_flutter.dart';
 
 void main() {
-  runApp(MaterialApp(home: MainPage()));
+  runApp(const MaterialApp(home: MainPage()));
 }
 
 class MainPage extends StatefulWidget {
+  const MainPage({super.key});
+
   @override
   _MainPageState createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
-  Configuration config = Configuration();
+  Configuration config = const Configuration();
   ImageFile? image;
   ImageFile? imageOutput;
   bool processing = false;
@@ -21,16 +23,16 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     final buttonGallery = ElevatedButton.icon(
       onPressed: handleOpenGallery,
-      icon: Icon(Icons.photo_outlined),
-      label: Text('Pick an Image'),
+      icon: const Icon(Icons.photo_outlined),
+      label: const Text('Pick an Image'),
     );
 
     final buttonCompress = Padding(
       padding: const EdgeInsets.all(16),
       child: ElevatedButton.icon(
         onPressed: handleCompressImage,
-        icon: Icon(Icons.compress),
-        label: Text('Compress Image'),
+        icon: const Icon(Icons.compress),
+        label: const Text('Compress Image'),
       ),
     );
 
@@ -41,13 +43,13 @@ class _MainPageState extends State<MainPage> {
         child: Image.memory(image!.rawBytes),
       );
       final inputImageSizeType = ListTile(
-        title: Text('Image size-type :'),
+        title: const Text('Image size-type :'),
         subtitle: Text(
             '${(image!.sizeInBytes / 1024 / 1024).toStringAsFixed(2)} MB - (${image!.width} x ${image!.height})'),
         trailing: Text(image!.extension),
       );
       final inputImageName = ListTile(
-        title: Text('Image name :'),
+        title: const Text('Image name :'),
         subtitle: Text(image!.fileName),
       );
 
@@ -59,22 +61,22 @@ class _MainPageState extends State<MainPage> {
               padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
               child: buttonGallery,
             ),
-            ListTile(title: Text('INPUT IMAGE')),
+            const ListTile(title: Text('INPUT IMAGE')),
             inputImage,
             inputImageSizeType,
             inputImageName,
-            Divider(),
-            ListTile(title: Text('OUTPUT IMAGE')),
+            const Divider(),
+            const ListTile(title: Text('OUTPUT IMAGE')),
             configOutputType,
             configQuality,
             nativeCompressorCheckBox,
             buttonCompress,
             processing
-                ? Padding(
-                    padding: const EdgeInsets.all(16.0),
+                ? const Padding(
+                    padding: EdgeInsets.all(16.0),
                     child: LinearProgressIndicator(),
                   )
-                : SizedBox.shrink(),
+                : const SizedBox.shrink(),
             if (imageOutput != null && !processing)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -82,7 +84,7 @@ class _MainPageState extends State<MainPage> {
               ),
             if (imageOutput != null && !processing)
               ListTile(
-                title: Text('Image size-type :'),
+                title: const Text('Image size-type :'),
                 subtitle: Text(
                     '${(imageOutput!.sizeInBytes / 1024 / 1024).toStringAsFixed(2)} MB - (${imageOutput!.width} x ${imageOutput!.height})'),
                 trailing: Text(imageOutput!.contentType ?? '-'),
@@ -102,7 +104,7 @@ class _MainPageState extends State<MainPage> {
 
   Widget get nativeCompressorCheckBox {
     return CheckboxListTile(
-      title: Text('Native compressor for JPG/PNG'),
+      title: const Text('Native compressor for JPG/PNG'),
       value: config.useJpgPngNativeCompressor,
       onChanged: (flag) {
         setState(() {
@@ -118,14 +120,14 @@ class _MainPageState extends State<MainPage> {
 
   Widget get configOutputType {
     return ListTile(
-      title: Text('Select output type'),
+      title: const Text('Select output type'),
       subtitle: Text(config.outputType.toString()),
       trailing: PopupMenuButton<ImageOutputType>(
         itemBuilder: (context) {
           return ImageOutputType.values
               .map((e) => PopupMenuItem(
-                    child: Text(e.toString()),
                     value: e,
+                    child: Text(e.toString()),
                   ))
               .toList();
         },
