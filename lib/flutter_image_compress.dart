@@ -13,7 +13,7 @@ export 'src/compress_format.dart';
 ///
 /// static method will help you compress image
 ///
-/// most method will return [Uint8List]
+/// most methods will return [Uint8List]
 ///
 /// You can use `Image.memory` to display image
 /// ```dart
@@ -36,8 +36,7 @@ export 'src/compress_format.dart';
 /// support rotate
 ///
 class FlutterImageCompress {
-  static const MethodChannel _channel =
-      MethodChannel('flutter_image_compress');
+  static const MethodChannel _channel = MethodChannel('flutter_image_compress');
 
   static final Validator _validator = Validator(_channel);
 
