@@ -23,7 +23,7 @@ class ImageCompressionFlutterWeb {
   /// Handles method calls over the MethodChannel of this plugin.
   /// Note: Check the "federated" architecture for a new way of doing this:
   /// https://flutter.dev/go/federated-plugins
-  Future<dynamic> handleMethodCall(MethodCall call) async {
+  Future<Map<String, dynamic>> handleMethodCall(MethodCall call) async {
     final compressor = getCompressor();
     final ImageFile output;
 
