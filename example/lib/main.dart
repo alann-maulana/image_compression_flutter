@@ -14,10 +14,10 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  Configuration config = const Configuration();
-  ImageFile? image;
-  ImageFile? imageOutput;
-  bool processing = false;
+  Configuration _config = const Configuration();
+  ImageFile? _image;
+  ImageFile? _imageOutput;
+  bool _processing = false;
 
   @override
   Widget build(BuildContext context) {
@@ -37,20 +37,20 @@ class _MainPageState extends State<MainPage> {
     );
 
     Widget body = Center(child: buttonGallery);
-    if (image != null) {
+    if (_image != null) {
       final inputImage = Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Image.memory(image!.rawBytes),
+        child: Image.memory(_image!.rawBytes),
       );
       final inputImageSizeType = ListTile(
         title: const Text('Image size-type :'),
         subtitle: Text(
-            '${(image!.sizeInBytes / 1024 / 1024).toStringAsFixed(2)} MB - (${image!.width} x ${image!.height})'),
-        trailing: Text(image!.extension),
+            '${(_image!.sizeInBytes / 1024 / 1024).toStringAsFixed(2)} MB - (${_image!.width} x ${_image!.height})'),
+        trailing: Text(_image!.extension),
       );
       final inputImageName = ListTile(
         title: const Text('Image name :'),
-        subtitle: Text(image!.fileName),
+        subtitle: Text(_image!.fileName),
       );
 
       body = SingleChildScrollView(
@@ -71,23 +71,23 @@ class _MainPageState extends State<MainPage> {
             configQuality,
             nativeCompressorCheckBox,
             buttonCompress,
-            processing
+            _processing
                 ? const Padding(
                     padding: EdgeInsets.all(16.0),
                     child: LinearProgressIndicator(),
                   )
                 : const SizedBox.shrink(),
-            if (imageOutput != null && !processing)
+            if (_imageOutput != null && !_processing)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Image.memory(imageOutput!.rawBytes),
+                child: Image.memory(_imageOutput!.rawBytes),
               ),
-            if (imageOutput != null && !processing)
+            if (_imageOutput != null && !_processing)
               ListTile(
                 title: const Text('Image size-type :'),
                 subtitle: Text(
-                    '${(imageOutput!.sizeInBytes / 1024 / 1024).toStringAsFixed(2)} MB - (${imageOutput!.width} x ${imageOutput!.height})'),
-                trailing: Text(imageOutput!.contentType ?? '-'),
+                    '${(_imageOutput!.sizeInBytes / 1024 / 1024).toStringAsFixed(2)} MB - (${_imageOutput!.width} x ${_imageOutput!.height})'),
+                trailing: Text(_imageOutput!.contentType ?? '-'),
               ),
           ],
         ),
@@ -105,13 +105,13 @@ class _MainPageState extends State<MainPage> {
   Widget get nativeCompressorCheckBox {
     return CheckboxListTile(
       title: const Text('Native compressor for JPG/PNG'),
-      value: config.useJpgPngNativeCompressor,
+      value: _config.useJpgPngNativeCompressor,
       onChanged: (flag) {
         setState(() {
-          config = Configuration(
-            outputType: config.outputType,
+          _config = Configuration(
+            outputType: _config.outputType,
             useJpgPngNativeCompressor: flag ?? false,
-            quality: config.quality,
+            quality: _config.quality,
           );
         });
       },
@@ -121,7 +121,7 @@ class _MainPageState extends State<MainPage> {
   Widget get configOutputType {
     return ListTile(
       title: const Text('Select output type'),
-      subtitle: Text(config.outputType.toString()),
+      subtitle: Text(_config.outputType.toString()),
       trailing: PopupMenuButton<ImageOutputType>(
         itemBuilder: (context) {
           return ImageOutputType.values
@@ -133,10 +133,10 @@ class _MainPageState extends State<MainPage> {
         },
         onSelected: (outputType) {
           setState(() {
-            config = Configuration(
+            _config = Configuration(
               outputType: outputType,
-              useJpgPngNativeCompressor: config.useJpgPngNativeCompressor,
-              quality: config.quality,
+              useJpgPngNativeCompressor: _config.useJpgPngNativeCompressor,
+              quality: _config.quality,
             );
           });
         },
@@ -146,18 +146,18 @@ class _MainPageState extends State<MainPage> {
 
   Widget get configQuality {
     return ListTile(
-      title: Text('Select quality (${config.quality})'),
+      title: Text('Select quality (${_config.quality})'),
       subtitle: Slider.adaptive(
-        value: config.quality.toDouble(),
+        value: _config.quality.toDouble(),
         divisions: 100,
         min: 0,
         max: 100,
-        label: config.quality.toString(),
+        label: _config.quality.toString(),
         onChanged: (value) {
           setState(() {
-            config = Configuration(
-              outputType: config.outputType,
-              useJpgPngNativeCompressor: config.useJpgPngNativeCompressor,
+            _config = Configuration(
+              outputType: _config.outputType,
+              useJpgPngNativeCompressor: _config.useJpgPngNativeCompressor,
               quality: value.toInt(),
             );
           });
@@ -172,21 +172,21 @@ class _MainPageState extends State<MainPage> {
     if (xFile != null) {
       final image = await xFile.asImageFile;
       setState(() {
-        this.image = image;
+        _image = image;
       });
     }
   }
 
   handleCompressImage() async {
     setState(() {
-      processing = true;
+      _processing = true;
     });
-    final param = ImageFileConfiguration(input: image!, config: config);
+    final param = ImageFileConfiguration(input: _image!, config: _config);
     final output = await compressor.compress(param);
 
     setState(() {
-      imageOutput = output;
-      processing = false;
+      _imageOutput = output;
+      _processing = false;
     });
   }
 }
