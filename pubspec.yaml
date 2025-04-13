@@ -1,6 +1,6 @@
 name: image_compression_flutter
 description: Flutter image compression and resize for Mobile, Desktop and Web. Support format JPG, PNG, WEBP.
-version: 1.0.4
+version: 1.0.5
 homepage: https://github.com/eyro-labs/image_compression_flutter
 
 environment:
@@ -13,8 +13,8 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
 
-  cross_file: ^0.3.3+4
-  flutter_image_compress: ^2.1.0
+  cross_file: ^0.3.4+2
+  flutter_image_compress: ^2.4.0
   image_compression: ^1.0.5
 
 dev_dependencies:
