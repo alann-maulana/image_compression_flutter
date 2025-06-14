@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:image_compression/image_compression.dart' as ic;
+import 'package:image_compression_flutter/image_compression_flutter.dart';
 
-import 'configurations.dart';
 import 'extension.dart';
 
 /// Image compression engine
 abstract class ImageCompressionFlutter {
   static const MethodChannel _channel =
-      const MethodChannel('image_compression_flutter');
+      MethodChannel('image_compression_flutter');
 
   @protected
-  Future dummyCallNativeCode(
+  Future<ic.ImageFile> dummyCallNativeCode(
     String method,
     Map<String, dynamic> data,
     Future<ic.ImageFile> Function() callback,
@@ -23,7 +23,7 @@ abstract class ImageCompressionFlutter {
         return ImageFileExtension.decode(result);
       }
 
-      return null;
+      throw Exception('result was unexpectedly not a Map');
     } on MissingPluginException catch (_) {
       return await callback();
     }
